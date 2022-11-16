@@ -6,12 +6,24 @@
 
 def is_all_chinese(strs):
     """ 判断字符串全为中文 """
-    strs = strs.replace(" ", "")
+    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
+    strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
     for _char in strs:
         if not '\u4e00' <= _char <= '\u9fa5':
             return False
 
     return True
+
+
+def is_all_chinese1(strs):
+    """ 判断字符串全为中文 """
+    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
+    strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
+
+    identify = list(map(lambda s: '\u4e00' <= s <= '\u9fa5', strs))
+
+    return all(identify)
+
 
 
 def is_contains_chinese(strs):
@@ -25,7 +37,8 @@ def is_contains_chinese(strs):
 
 def is_all_english(strs):
     """ 检测是否全是英文字符 """
-    strs = strs.replace(" ",'')
+    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
+    strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
     for i in strs:
         if i not in string.ascii_lowercase + string.ascii_uppercase:
             return False
