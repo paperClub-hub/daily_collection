@@ -8,3 +8,4 @@
 #### 4. py/zipfiles.py, 基于协程进行文件压缩，压缩后自动删除原始文件
 #### 5. py/logging_with_different_color.py, 根据日志登记显示不同的颜色
 #### 6. py/check_str_is_en_cn.py, 判断字符串是否全为中文、包含中文，是否全为英文、包含英文
+#### 7. py/has_number.py, 判断字符串中是否有【数值性数据】，如“123”，“三”，“Jan”, “one” 等..
