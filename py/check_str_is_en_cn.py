@@ -4,16 +4,14 @@
 # @Projecte : PyCharm
 # @Date     : 2022-10-24 8:59
 
-import string
-
-
 def is_all_chinese(strs):
     """ 判断字符串全为中文 """
-
+    strs = strs.replace(" ", "")
     for _char in strs:
-        if '\u4e00' <= _char <= '\u9fa5':
-            return True
-    return False
+        if not '\u4e00' <= _char <= '\u9fa5':
+            return False
+
+    return True
 
 
 def is_contains_chinese(strs):
@@ -27,6 +25,7 @@ def is_contains_chinese(strs):
 
 def is_all_english(strs):
     """ 检测是否全是英文字符 """
+    strs = strs.replace(" ",'')
     for i in strs:
         if i not in string.ascii_lowercase + string.ascii_uppercase:
             return False
