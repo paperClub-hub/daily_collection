@@ -45,24 +45,21 @@ from xlsxwriter.workbook import Workbook
 workbook = Workbook(r'paperclub2.xlsx')
 worksheet = workbook.add_worksheet()
 
-style = {'valign': 'vcenter', # 垂直居中
-         'text_wrap': False, # 自动换行
-         }
 
-red_style = workbook.add_format({'color': 'red'})
-blue_style = workbook.add_format({'color': 'blue'})
+base_stype = workbook.add_format({ 'color': 'red', 'valign': 'vcenter', 'text_wrap': True })
+red_style = workbook.add_format({ 'color': 'red', 'valign': 'vcenter', 'text_wrap': True })
+blue_style = workbook.add_format({ 'color': 'blue', 'valign': 'vcenter', 'text_wrap': True })
 
 row = 0
 col = 0
 for i, (date, item, value) in enumerate(data):
     string1 = item[:i+1]
     string2 = item[i+1: ]
-
     worksheet.write_string(row, col, date) # 列1
     item_rich_string = [string1, red_style, string2, blue_style] # 格式
-    worksheet.write_rich_string(row, col+1, *item_rich_string) #列二
+    worksheet.write_rich_string(row, col + 1, *item_rich_string) #列二
 
-    worksheet.write_string(row, col+2, str(value)) # 列3
+    worksheet.write_string(row, col + 2, str(value)) # 列3
     row += 1
 
 worksheet.freeze_panes(1, 0) # 冻结首行
