@@ -9,4 +9,8 @@
 #### 5. py/logging_with_different_color.py, 根据日志登记显示不同的颜色
 #### 6. py/check_str_is_en_cn.py, 判断字符串是否全为中文、包含中文，是否全为英文、包含英文
 #### 7. py/has_number.py, 判断字符串中是否有【数值性数据】，如“123”，“三”，“Jan”, “one” 等..
+<<<<<<< HEAD
+#### 8. py/api_query.py, 将请求【post】字段信息保存到日志
+=======
 #### 8. py/excel_color.py, 文本写入excel，并对字段颜色进行设置
+>>>>>>> 1653ced7ebc5cffb413bc8bdbbbb91e80e380602
