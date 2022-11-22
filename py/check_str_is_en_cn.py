@@ -1,8 +1,9 @@
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Projecte : PyCharm
-# @Date     : 2022-10-24 8:59
+# @Author   : paperclub
+# @Desc     : paperclub@163.com
+
 
 def is_all_chinese(strs):
     """ 判断字符串全为中文 """

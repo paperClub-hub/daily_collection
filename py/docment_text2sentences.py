@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Projecte : PyCharm
+# @Author   : paperclub
+# @Desc     : paperclub@163.com
+
 import re
 
 
