@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 # @Projecte : PyCharm
 # @Date     : 2022-11-08 14:28
-# @Author   : NING MEI
-# @Desc     :
-
+# @Author   : paperclub
+# @Desc     : paperclub@163.com
 
 import os
 import json

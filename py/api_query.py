@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # @Projecte : PyCharm
 # @Date     : 2022-11-21 13:35
-# @Author   : NING MEI
-# @Desc     :
+# @Author   : paperclub
+# @Desc     : paperclub@163.com
 
 
 
