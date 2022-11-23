@@ -14,4 +14,6 @@
 #### 10. py/muti_arrs_sorting.py, 多维数组排序，适合排序召回等算法返回值排序
 #### 11. py/image_padding.py, 图像padding处理
 #### 12. node/获取客户端ip.vue, vue获取客户端ip
+#### 13. py/check_filesize.py, """ 检测目录下文件大小， 打印大于指定大小的文件地址"""
+#### 14. py/常用的正则表达式总结.txt, 常用的正则表达式总结
 
