@@ -8,23 +8,29 @@ import re
 
 
 def cut_sentences_v1(sent):
-    """
-    the first rank of sentence cut
-    """
+
     sent = re.sub('([。！？\?])([^”’])', r"\1\n\2", sent)  # 单字符断句符
     sent = re.sub('(\.{6})([^”’])', r"\1\n\2", sent)  # 英文省略号
     sent = re.sub('(\…{2})([^”’])', r"\1\n\2", sent)  # 中文省略号
     sent = re.sub('([。！？\?][”’])([^，。！？\?])', r"\1\n\2", sent)
-    # 如果双引号前有终止符，那么双引号才是句子的终点，把分句符\n放到双引号后
+
     return sent.split("\n")
 
 
 def cut_sentences_v2(sent):
-    """
-    the second rank of spilt sentence, split '；' | ';'
-    """
+
     sent = re.sub('([；;])([^”’])', r"\1\n\2", sent)
     return sent.split("\n")
+
+
+def cut_sentences_v3(text):
+    """ 支持中英文的分句切割 """
+    text = re.sub('([。！？；\?!])([^"‘])', r"\1\n\2", text)  # 断句
+    text = re.sub('(\…{2}|\.{6}|[\.|;]\s)([^”’])', r"\1\n\2", text)  # 省略号、英文句号、分号
+    text = re.sub('([。！？\?!][”’])([^，。！？\?!])', r"\1\n\2", text)
+    text = text.rstrip()  # 段尾如果有多余的\n就去掉它
+
+    return text.split("\n")
 
 
 def cut_sent_for_bert(text, max_seq_len):
