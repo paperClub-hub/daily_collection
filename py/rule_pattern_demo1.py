@@ -154,32 +154,62 @@ def postprocess_triplets(jdat):
 
 
 
+def specific_words():
+    """ 关键字匹配冒号、反斜杠、竖杠线前后内容提取 """
 
-if __name__ == '__main__':
+    # 示例1：
+    w = '项目名称' # 自定义
+    texts = """【项目名称】：新建小区改造。预算：20万
+    """
+    # 示例1结果： 【项目名称】：新建小区改造。
 
-    pjfiles = glob("/project_info/*.json")
-    ujfiles = glob("/uie_items/*.json")
-    njfiles = glob("/ner_words/*.json")
 
-    pjfiles2 = list(map(lambda x: os.path.basename(x), pjfiles))
-    ujfiles2 = list(map(lambda x: os.path.basename(x), ujfiles))
-    njfiles2 = list(map(lambda x: os.path.basename(x), njfiles))
-    save_dir = "/merge"
-    for i, jfile in enumerate(pjfiles):
-        if os.path.basename(jfile) in ujfiles2 and os.path.basename(jfile) in njfiles2:
-            ufile = f"/uie_items/{os.path.basename(jfile)}"
-            nfile = f"/ner_words/{os.path.basename(jfile)}"
+    # 示例2：
+    w = 'project'  # 自定义
+    texts = """project: St.ZhongNanJie 200#. cost: 300RMB.
+           """
+    # 示例2结果： project: St.ZhongNanJie 200#.
+    
 
-            print(jfile)
-            data = OrderedDict()
-            pdat = load_json(jfile)
-            udat = load_json(ufile)
-            ndat = load_json(nfile)
-            del ndat['url']
-            udict = postprocess_triplets(udat)
-            data.update(**pdat)
-            data.update(**udict)
-            data.update(**ndat)
+    reg = rf"([【]?[\s]?{w}[\s]?[】]?[\s]?" # 关键字（项目名称）
+    reg += r"([:|：|┃|/|／|│|丨|｜|︱])(.*?)"  # 识别符（：，:,等，可以自定义） + 随从内容（新建小区改造。）
+    reg += r"($|\。|\.\s|\；|\;))"  # 终止符（结尾或。，.，可以自定义, 英文句号为“. ”而不是“.”）
 
-            print(json.dumps(data, ensure_ascii=False, indent=True),
-                  file=open(f"{save_dir}/{os.path.basename(jfile)}", 'w'))
+
+    reg_match = re.search(reg, texts, re.IGNORECASE)
+    if reg_match:
+        print("提取结果： ===》 " , reg_match.group())
+    else:
+        print("无结果")
+
+
+
+specific_words()
+# if __name__ == '__main__':
+#
+#     pjfiles = glob("/project_info/*.json")
+#     ujfiles = glob("/uie_items/*.json")
+#     njfiles = glob("/ner_words/*.json")
+#
+#     pjfiles2 = list(map(lambda x: os.path.basename(x), pjfiles))
+#     ujfiles2 = list(map(lambda x: os.path.basename(x), ujfiles))
+#     njfiles2 = list(map(lambda x: os.path.basename(x), njfiles))
+#     save_dir = "/merge"
+#     for i, jfile in enumerate(pjfiles):
+#         if os.path.basename(jfile) in ujfiles2 and os.path.basename(jfile) in njfiles2:
+#             ufile = f"/uie_items/{os.path.basename(jfile)}"
+#             nfile = f"/ner_words/{os.path.basename(jfile)}"
+#
+#             print(jfile)
+#             data = OrderedDict()
+#             pdat = load_json(jfile)
+#             udat = load_json(ufile)
+#             ndat = load_json(nfile)
+#             del ndat['url']
+#             udict = postprocess_triplets(udat)
+#             data.update(**pdat)
+#             data.update(**udict)
+#             data.update(**ndat)
+#
+#             print(json.dumps(data, ensure_ascii=False, indent=True),
+#                   file=open(f"{save_dir}/{os.path.basename(jfile)}", 'w'))
