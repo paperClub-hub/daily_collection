@@ -17,7 +17,7 @@ def word_map1():
 
 	a = 1
 	b = a + 10
-	reg += r"([\s|\w|\W]?){"
+	reg += r"([\s|\S]?){"
 	reg += rf"{a},{b}"
 	reg += r"}"
 	reg += r"(\。|\.\s|\；|\;|$))"
