@@ -169,7 +169,7 @@ def specific_words():
     texts = """project: St.ZhongNanJie 200#. cost: 300RMB.
            """
     # 示例2结果： project: St.ZhongNanJie 200#.
-    
+
 
     reg = rf"([【]?[\s]?{w}[\s]?[】]?[\s]?" # 关键字（项目名称）
     reg += r"([:|：|┃|/|／|│|丨|｜|︱])(.*?)"  # 识别符（：，:,等，可以自定义） + 随从内容（新建小区改造。）
