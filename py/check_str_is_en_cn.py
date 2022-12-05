@@ -38,8 +38,12 @@ def is_contains_chinese(strs):
 
 def is_all_english(strs):
     """ 检测是否全是英文字符 """
-    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
-    strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
+    # reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
+    # strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
+
+    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】–#￥%……&*（）——+-=“：’；、。，？》《{}|\s|\W'
+    strs = re.sub(f"[{reg}]*", "", strs)
+
     for i in strs:
         if i not in string.ascii_lowercase + string.ascii_uppercase:
             return False
