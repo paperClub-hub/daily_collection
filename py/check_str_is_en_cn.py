@@ -7,8 +7,18 @@
 
 def is_all_chinese(strs):
     """ 判断字符串全为中文 """
-    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
-    strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
+    # reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
+    # strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
+    # for _char in strs:
+    #     if not '\u4e00' <= _char <= '\u9fa5':
+    #         return False
+    #
+    # return True
+
+    reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}|\s'
+    reg += '\W|\d'
+    strs = re.sub(rf"[{reg}]+", "", strs)
+
     for _char in strs:
         if not '\u4e00' <= _char <= '\u9fa5':
             return False
@@ -18,6 +28,7 @@ def is_all_chinese(strs):
 
 def is_all_chinese1(strs):
     """ 判断字符串全为中文 """
+    """ 速度慢 """
     reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
     strs = re.sub(rf"[{reg}|\s]+", "", strs) # 去除标点符号及空格, 等价： re.sub(r"[%s|\s]+" %reg, "", strs)
 
