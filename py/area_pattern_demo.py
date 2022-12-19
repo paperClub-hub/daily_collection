@@ -110,7 +110,7 @@ texts = [
 	]
 
 if __name__ == '__main__':
-    for t in texts:
+	for t in texts:
 	    t = t.replace(' ', '')
 	    res = get_area(t)
-	    print(f"text= {t}, res =>>> {res}")
+	    print(f"{t},  res = >  {res}")

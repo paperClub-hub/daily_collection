@@ -28,10 +28,10 @@ def is_numerical(word:str):
 
 
 
-text = ["今天星期三", "电话119", "one boy"]
+text = ["今天星期三", "电话119", "one boy", '2023年，新冠终将称为过去式！', 'hello, paperClub', '今天的你， 是否比昨天快乐呢？ ']
 
 for x in text:
 	state, value = is_numerical(x)
-	if state:
-		print(f"{x}: =>  is_numerical: {state}, value: {value}")
+
+	print(f"{x}: =>  is_numerical: {state}, value: {value}")
 
