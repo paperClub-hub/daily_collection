@@ -19,4 +19,5 @@
 #### 15. py/正则表达式核心知识点.png, 一图汇总核心知识点
 #### 16. py/rule_word.py, 关键字键值提取（以:/;等为分割，仅做示例、可自定义）
 #### 17. node/emoj-icon.html, emoji表情符大全
-#### 18. py/area_pattern_demo.py, 面积及面积单位处理
+#### 18. py/area_pattern_demo.py, 面积及面积单位处理（归一化）
+#### 19. py/time_pattern_demo.py, 时间及时间单位处理（归一化）
