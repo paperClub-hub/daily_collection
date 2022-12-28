@@ -168,5 +168,4 @@ scores = tf_session.run(feches, feed_dict={feed_input: img_input})
 print("scores: ", scores)
 scores = scores[0].tolist()
 indx = np.argmax(scores)
-categories = ['drawings', 'hentai', 'neutral', 'porn', 'sexy']
-print(indx, categories[indx], scores[indx])
+print(indx, scores[indx])
