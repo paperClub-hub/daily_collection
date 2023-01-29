@@ -23,4 +23,5 @@
 #### 19. py/time_pattern_demo.py, 时间及时间单位处理（归一化）
 #### 20. py/datetime_parser.py, 时间归一化处理（合并）
 #### 21. py/tf_freeze_session.py, tensorflow1.x/tensorflow2.x h5模型转pb及预测
+#### 22. py/docment2words.py, 将中英文档转单个字(单词)列表，可用于统计字数
 
