@@ -4,7 +4,7 @@
 # @Author   : paperclub
 # @Desc     : paperclub@163.com
 
-
+# 语种判断：langdetect，langid，chardet，"pip install" 即可
 def is_all_chinese(strs):
     """ 判断字符串全为中文 """
     # reg = '~`!#$%^&*()_+-=|\';":/.,?><~·！@[\\]【\\】#￥%……&*（）——+-=“：’；、。，？》《{}'
