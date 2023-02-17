@@ -33,6 +33,38 @@ def cut_sentences_v3(text):
     return text.split("\n")
 
 
+def docment_cutter(para: str, keep_scentence: bool = True, remove_blank: bool = False):
+    """
+	将全文按照句子进行切割, 如果要保证拆分结果组装和输入完全一致，输入不应包括 '\n'
+	:param para: 文档正文
+	:param keep_scentence: 是否保留完整的句子, 最低分隔符为句号，False时拆分更细，最低分割符为逗号
+	:param remove_blank: 是否保留空格
+	:return:
+	"""
+
+    def cutter_all_punctuation(para):
+        """ 根据标点符号强制拆分分句 """
+        para = re.sub('([。！？；，\?])([^”’])', r"\1\n\2", para)  # 中文断句’叹号，冒号，句号，逗号问号‘(！：。，？)
+        para = re.sub('([\.;,!:\?])(\s)', r"\1\n\2", para)  # 英文断句
+        para = re.sub('(\…{2}|\.{6})([^”’])', r"\1\n\2", para)  # 中英文’省略号断句‘
+        para = re.sub('([。！？\?][”’])([^，。！？\?])', r'\1\n\2', para)
+        para = para.rstrip()
+        return para
+
+    if keep_scentence:
+        para = re.sub('([。！？\?])([^”’])', r"\1\n\2", para)
+        para = re.sub('([\.;])(\s)', r"\1\n\2", para)  # 英文断句
+        para = re.sub('(\.{6})([^”’])', r"\1\n\2", para)  # 英文省略号
+        para = re.sub('(\…{2})([^”’])', r"\1\n\2", para)  # 中文省略号
+        para = re.sub('([。！？\?][”’])([^，。！？\?])', r'\1\n\2', para)
+        para = para.rstrip()
+
+    else:
+        para = cutter_all_punctuation(para)
+
+    return list(filter(bool, para.split('\n'))) if remove_blank else para.split('\n')
+
+
 def cut_sent_for_bert(text, max_seq_len):
     # 将句子分句，细粒度分句后再重新合并
     sentences = []
