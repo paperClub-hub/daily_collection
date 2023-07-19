@@ -25,4 +25,4 @@
 #### 21. py/tf_freeze_session.py, tensorflow1.x/tensorflow2.x h5模型转pb及预测
 #### 22. py/docment2words.py, 将中英文档转单个字(单词)列表，可用于统计字数
 #### 23. py/grid_search.py, grid_search示例，用于nlp词扫描逻辑
-
+#### 24. py/decay.py, 衰减值进行示例，用于数值随着时间规则性衰减
